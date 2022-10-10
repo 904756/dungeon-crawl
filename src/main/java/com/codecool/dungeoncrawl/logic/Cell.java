@@ -1,6 +1,8 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Actor;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class Cell implements Drawable {
     private CellType type;
@@ -8,7 +10,7 @@ public class Cell implements Drawable {
     private GameMap gameMap;
     private int x, y;
 
-    Cell(GameMap gameMap, int x, int y, CellType type) {
+    public Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
         this.x = x;
         this.y = y;
@@ -19,8 +21,9 @@ public class Cell implements Drawable {
         return type;
     }
 
-    public void setType(CellType type) {
+    public EventHandler<ActionEvent> setType(CellType type) {
         this.type = type;
+        return null;
     }
 
     public void setActor(Actor actor) {

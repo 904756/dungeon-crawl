@@ -1,13 +1,16 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -37,6 +40,9 @@ public class Main extends Application {
         ui.add(healthLabel, 1, 0);
 
         BorderPane borderPane = new BorderPane();
+
+        Button pickUp = new Button("Pick up");
+        ui.add(pickUp, 0,1);
 
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
