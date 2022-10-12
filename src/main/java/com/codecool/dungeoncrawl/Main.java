@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl;
 
+import com.codecool.dungeoncrawl.logic.items.Item;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
@@ -19,12 +20,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    Button pickUp = new Button("Pick Up");
     GameMap map = MapLoader.loadMap();
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -38,11 +41,16 @@ public class Main extends Application {
 
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
+        ui.add(pickUp, 10, 2);
+        setPickUpButtonActive(false);
+        pickUp.setDefaultButton(true);
+        pickUp.setOnAction( actionEvent -> {
+            Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());
+            cell.setType(CellType.FLOOR);
+            setPickUpButtonActive(false);
+        });
 
         BorderPane borderPane = new BorderPane();
-
-        Button pickUp = new Button("Pick up");
-        ui.add(pickUp, 0,1);
 
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
@@ -55,24 +63,44 @@ public class Main extends Application {
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
     }
+    private void PickUpButtonActivity() {
+        if (isItem()) {
+            setPickUpButtonActive(true);
+            canvas.setFocusTraversable(true);
+        } else {
+            setPickUpButtonActive(false);
+        }
+    }
+
+    private boolean isItem() {
+        return map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.WEAPON;
+    }
+    private void setPickUpButtonActive(boolean isActive) {
+        pickUp.setDisable(!isActive);
+        pickUp.setVisible(isActive);
+    }
 
     private void onKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
                 refresh();
+                PickUpButtonActivity();
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
                 refresh();
+                PickUpButtonActivity();
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
                 refresh();
+                PickUpButtonActivity();
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
                 refresh();
+                PickUpButtonActivity();
                 break;
         }
     }
