@@ -54,11 +54,9 @@ public class    MapLoader {
                         case 'g':
                             cell.setType(CellType.MONSTER2);
                             break;
-
-
-
-
-
+                        case 'b':
+                            cell.setType(CellType.BOSS);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
