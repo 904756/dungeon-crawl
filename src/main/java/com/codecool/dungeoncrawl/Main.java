@@ -73,7 +73,8 @@ public class Main extends Application {
     }
 
     private boolean isItem() {
-        return map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.WEAPON;
+        return (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.WEAPON ||
+                map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.KEY );
     }
     private void setPickUpButtonActive(boolean isActive) {
         pickUp.setDisable(!isActive);
