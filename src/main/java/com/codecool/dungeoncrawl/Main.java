@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl;
 
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.items.Item;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
@@ -23,6 +24,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
     Button pickUp = new Button("Pick Up");
     public Label playerNameLabel = new Label();
+
+    public Inventory getPlayerInventory() {
+        return playerInventory;
+    }
 
     public Inventory playerInventory = new Inventory();
     GameMap map = MapLoader.loadMap();
@@ -55,6 +60,7 @@ public class Main extends Application {
         pickUp.setOnAction( actionEvent -> {
             Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());
             playerInventory.addToInventory(cell.getType());
+            map.getPlayer().setInventory(playerInventory);
             cell.setType(CellType.FLOOR);
             setPickUpButtonActive(false);
         });
