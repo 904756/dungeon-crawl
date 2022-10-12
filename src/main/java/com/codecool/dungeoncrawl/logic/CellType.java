@@ -14,7 +14,11 @@ public enum CellType {
     DOOR_OPEN ("open door"),
     DOOR_CLOSED_YELLOW ("closed door yellow"),
     DOOR_OPEN_YELLOW ("open door yellow"),
-    BOSS ("boss");
+    BOSS ("boss"),
+    FIR("fir"),
+    FULL_FIR("full fir"),
+    CACTUS1("cactus1"),
+    CACTUS2("cactus2");
 
     private final String tileName;
 
