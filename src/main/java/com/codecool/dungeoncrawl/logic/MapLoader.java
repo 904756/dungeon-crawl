@@ -48,6 +48,12 @@ public class    MapLoader {
                         case 'D':
                             cell.setType(CellType.DOOR_CLOSED);
                             break;
+                        case 'f':
+                            cell.setType(CellType.MONSTER3);
+                            break;
+                        case 'g':
+                            cell.setType(CellType.MONSTER2);
+                            break;
 
 
 
