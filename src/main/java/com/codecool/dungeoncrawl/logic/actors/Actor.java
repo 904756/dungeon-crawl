@@ -25,8 +25,7 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if ( (nextCell.getType() == CellType.FLOOR) || (nextCell.getType() == CellType.WEAPON) || (nextCell.getType() == CellType.KEY)){
-//        || ((nextCell.getType() == CellType.DOOR_CLOSED)&& inventory.contains("key"))){
+        if ( (nextCell.getType() == CellType.FLOOR) || (nextCell.getType() == CellType.WEAPON) || (nextCell.getType() == CellType.KEY)|| (nextCell.getType() == CellType.DOOR_OPEN)){
         cell.setActor(null);
         nextCell.setActor(this);
         cell = nextCell;
