@@ -44,15 +44,15 @@ public class Main extends Application {
         ui.setPadding(new Insets(10));
 
         ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 1, 0);
-        ui.add(new Label("Inventory: "), 3, 1);
-        ui.add(inventory, 4,2 );
-        ui.add(pickUp, 5, 0);
+        ui.add(healthLabel, 2, 0);
+        ui.add(new Label("Inventory: "), 0, 2);
+        ui.add(inventory, 2,2 );
+        ui.add(pickUp, 10, 0);
         setPickUpButtonActive(false);
         pickUp.setDefaultButton(true);
         pickUp.setOnAction( actionEvent -> {
             Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());
-            playerInventory.addToInventory(cell.getItem());
+            playerInventory.addToInventory(cell.getType());
             cell.setType(CellType.FLOOR);
             setPickUpButtonActive(false);
         });
@@ -81,8 +81,8 @@ public class Main extends Application {
 
     private void refreshInventory() {
         inventory.getChildren().removeAll(inventory.getChildren());
-        for (Item item : playerInventory.getItems()) {
-            inventory.getChildren().add(new Label(item.getCell().getTileName()));
+        for (CellType item : playerInventory.getItems()) {
+            inventory.getChildren().add(new Label(item.getTileName()));
         }
     }
 
