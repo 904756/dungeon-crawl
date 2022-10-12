@@ -43,7 +43,7 @@ public class Main extends Application {
         playerNameLabel.setText(map.getPlayer().getName());
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
-        ui.setPadding(new Insets(10));
+        ui.setPadding(new Insets(20));
         ui.add(new Label("Player: "+ playerNameLabel.getText().toUpperCase()),0,15);
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 2, 0);

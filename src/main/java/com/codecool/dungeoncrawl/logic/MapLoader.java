@@ -45,6 +45,9 @@ public class    MapLoader {
                         case 'K':
                             cell.setType(CellType.KEY);
                             break;
+                        case 'D':
+                            cell.setType(CellType.DOOR_CLOSED);
+                            break;
 
 
 
