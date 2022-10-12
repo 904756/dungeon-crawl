@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     Button pickUp = new Button("Pick Up");
+    public Label playerNameLabel = new Label();
 
     public Inventory playerInventory = new Inventory();
     GameMap map = MapLoader.loadMap();
@@ -39,10 +40,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        playerNameLabel.setText(map.getPlayer().getName());
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
-
+        ui.add(new Label("Player: "+ playerNameLabel.getText().toUpperCase()),0,15);
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 2, 0);
         ui.add(new Label("Inventory: "), 0, 2);
