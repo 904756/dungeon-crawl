@@ -34,6 +34,7 @@ public abstract class Actor implements Drawable {
                 (nextCell.getType() == CellType.MONSTER) ||
                 (nextCell.getType() == CellType.MONSTER2) ||
                 (nextCell.getType() == CellType.MONSTER3) ||
+                (nextCell.getType() == CellType.STAIR) ||
                 (nextCell.getType() == CellType.BOSS))
         {
         cell.setActor(null);
@@ -68,6 +69,7 @@ public abstract class Actor implements Drawable {
                 (nextCell.getType() == CellType.MONSTER) ||
                 (nextCell.getType() == CellType.MONSTER2) ||
                 (nextCell.getType() == CellType.MONSTER3) ||
+                (nextCell.getType() == CellType.STAIR) ||
                 (nextCell.getType() == CellType.BOSS))
         {
             cell.setBoss(null);

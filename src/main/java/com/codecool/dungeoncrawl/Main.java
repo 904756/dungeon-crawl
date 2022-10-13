@@ -8,6 +8,8 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -20,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     Button pickUp = new Button("Pick Up");
@@ -99,7 +102,15 @@ public class Main extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
+        if (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.STAIR){
+        primaryStage.hide();
+        }
     }
+    public void handle(WindowEvent t) {
+        Platform.exit();
+        System.exit(0);
+    }
+
     private void PickUpButtonActivity() {
         if (isItem()) {
             setPickUpButtonActive(true);
@@ -153,7 +164,7 @@ public class Main extends Application {
             case UP:
                 map.getPlayer().move(0, -1);
                 refresh();
-                map.getBoss().moveboss(0,-1);
+                if ( map.getBoss() != null) map.getBoss().moveboss(0,-1);
                 refresh();
                 refresh();
                 PickUpButtonActivity();
@@ -164,7 +175,7 @@ public class Main extends Application {
             case DOWN:
                 map.getPlayer().move(0, 1);
                 refresh();
-                map.getBoss().move(-1,0);
+                if ( map.getBoss() != null) map.getBoss().move(-1,0);
                 refresh();
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
@@ -174,7 +185,7 @@ public class Main extends Application {
             case LEFT:
                 map.getPlayer().move(-1, 0);
                 refresh();
-                map.getBoss().move(0,1);
+                if ( map.getBoss() != null) map.getBoss().move(0,1);
                 refresh();
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
@@ -185,7 +196,7 @@ public class Main extends Application {
             case RIGHT:
                 map.getPlayer().move(1,0);
                 refresh();
-                map.getBoss().move(1,0);
+                if ( map.getBoss() != null) map.getBoss().move(1,0);
                 refresh();
                 PickUpButtonActivity();
                 AttackUpButtonActivity();

@@ -18,7 +18,8 @@ public enum CellType {
     FIR("fir"),
     FULL_FIR("full fir"),
     CACTUS1("cactus1"),
-    CACTUS2("cactus2");
+    CACTUS2("cactus2"),
+    STAIR("next_level");
 
     private final String tileName;
 

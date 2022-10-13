@@ -73,6 +73,9 @@ public class    MapLoader {
                         case 'H':
                             cell.setType(CellType.CACTUS2);
                             break;
+                        case 'N':
+                            cell.setType(CellType.STAIR);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
