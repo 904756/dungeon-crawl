@@ -81,7 +81,7 @@ public class Main extends Application {
             if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
             if ( cell.getTileName()=="skeleton1" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 10);
             if ( cell.getTileName()=="skeleton2" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 15);
-            if ( cell.getTileName() == map.getCell(map.getBoss().getX(), map.getBoss().getY()).getType().getTileName() ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
+            if ( cell.getTileName() == map.getBoss().getTileName() ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
             cell.setType(CellType.FLOOR);
             setAButtonActive(false);
         });
@@ -134,7 +134,7 @@ public class Main extends Application {
         return (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER ||
                 map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER2 ||
                 map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER3 ||
-                (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType())== map.getCell(map.getBoss().getX(), map.getBoss().getY()).getType());
+                (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType())== CellType.BOSS );
     }
 
     private void setPickUpButtonActive(boolean isActive) {
@@ -151,6 +151,7 @@ public class Main extends Application {
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
+                map.getBoss().move(0,-1);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
@@ -159,6 +160,7 @@ public class Main extends Application {
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
+                map.getBoss().move(-1,0);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
@@ -167,6 +169,7 @@ public class Main extends Application {
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
+                map.getBoss().move(0,1);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
@@ -175,6 +178,7 @@ public class Main extends Application {
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
+                map.getBoss().move(1,0);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
