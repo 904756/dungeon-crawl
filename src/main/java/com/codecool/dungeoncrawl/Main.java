@@ -151,7 +151,7 @@ public class Main extends Application {
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
-                map.getBoss().move(0,-1);
+//                map.getBoss().move(0,-1);
                 refresh();
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
@@ -160,7 +160,7 @@ public class Main extends Application {
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
-                map.getBoss().move(-1,0);
+//                map.getBoss().move(-1,0);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
@@ -168,7 +168,7 @@ public class Main extends Application {
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
-                map.getBoss().move(0,1);
+//                map.getBoss().move(0,1);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
@@ -177,7 +177,7 @@ public class Main extends Application {
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
-                map.getBoss().move(1,0);
+//                map.getBoss().move(1,0);
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
                 refresh();
