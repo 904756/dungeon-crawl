@@ -8,7 +8,9 @@ import com.codecool.dungeoncrawl.Main;
 
 public abstract class Actor implements Drawable {
     protected Cell cell;
-    private int health = 10;
+    private int health;
+    private int strenght;
+    private int defence;
 
 
     public void setInventory(Inventory inventory) {
