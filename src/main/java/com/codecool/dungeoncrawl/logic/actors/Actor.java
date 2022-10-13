@@ -40,6 +40,7 @@ public abstract class Actor implements Drawable {
         nextCell.setActor(this);
         cell = nextCell;
         }
+
         if ((nextCell.getType() == CellType.DOOR_CLOSED) && inventory.contains("key")){
             cell.setActor(null);
             nextCell.setActor(this);

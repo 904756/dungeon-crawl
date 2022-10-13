@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     Button pickUp = new Button("Pick Up");
+    Button attack = new Button("ATTACK");
     public Label playerNameLabel = new Label();
 
     public Inventory getPlayerInventory() {
@@ -72,6 +73,16 @@ public class Main extends Application {
             setPickUpButtonActive(false);
         });
 
+        ui.add(attack, 10, 0);
+        setAButtonActive(false);
+        attack.setDefaultButton(true);
+        attack.setOnAction( actionEvent -> {
+            Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());;
+            if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(40);
+            cell.setType(CellType.FLOOR);
+            setAButtonActive(false);
+        });
+
         BorderPane borderPane = new BorderPane();
 
         borderPane.setCenter(canvas);
@@ -94,6 +105,15 @@ public class Main extends Application {
         }
     }
 
+    private void AttackUpButtonActivity() {
+        if (isMonster()) {
+            setAButtonActive(true);
+            canvas.setFocusTraversable(true);
+        } else {
+            setAButtonActive(false);
+        }
+    }
+
     private void refreshInventory() {
         inventory.getChildren().removeAll(inventory.getChildren());
         for (CellType item : playerInventory.getItems()) {
@@ -106,9 +126,21 @@ public class Main extends Application {
                 map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.KEY ||
                 map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.KEY_YELLOW);
     }
+
+    private boolean isMonster() {
+        return (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER ||
+                map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER2 ||
+                map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER3);
+    }
+
     private void setPickUpButtonActive(boolean isActive) {
         pickUp.setDisable(!isActive);
         pickUp.setVisible(isActive);
+    }
+
+    private void setAButtonActive(boolean isActive) {
+        attack.setDisable(!isActive);
+        attack.setVisible(isActive);
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
@@ -116,6 +148,7 @@ public class Main extends Application {
             case UP:
                 map.getPlayer().move(0, -1);
                 PickUpButtonActivity();
+                AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
 
@@ -123,6 +156,7 @@ public class Main extends Application {
             case DOWN:
                 map.getPlayer().move(0, 1);
                 PickUpButtonActivity();
+                AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
 
@@ -130,6 +164,7 @@ public class Main extends Application {
             case LEFT:
                 map.getPlayer().move(-1, 0);
                 PickUpButtonActivity();
+                AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
 
@@ -137,6 +172,7 @@ public class Main extends Application {
             case RIGHT:
                 map.getPlayer().move(1,0);
                 PickUpButtonActivity();
+                AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
 
