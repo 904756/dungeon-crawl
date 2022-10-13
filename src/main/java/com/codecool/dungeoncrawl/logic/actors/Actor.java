@@ -58,6 +58,26 @@ public abstract class Actor implements Drawable {
         }
     }
 
+    public void moveboss(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if ((nextCell.getType() == CellType.FLOOR) ||
+                (nextCell.getType() == CellType.WEAPON)  ||
+                (nextCell.getType() == CellType.KEY)  ||
+                (nextCell.getType() == CellType.KEY_YELLOW) ||
+                (nextCell.getType() == CellType.DOOR_OPEN_YELLOW) ||
+                (nextCell.getType() == CellType.MONSTER) ||
+                (nextCell.getType() == CellType.MONSTER2) ||
+                (nextCell.getType() == CellType.MONSTER3) ||
+                (nextCell.getType() == CellType.BOSS))
+        {
+            cell.setBoss(null);
+            cell.setType(CellType.FLOOR);
+            nextCell.setBoss(this);
+            cell = nextCell;
+            cell.setType(CellType.FLOOR);
+        }
+}
+
     public int getHealth() {
         return health;
     }

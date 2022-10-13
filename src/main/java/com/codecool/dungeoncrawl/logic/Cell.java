@@ -15,6 +15,7 @@ public class Cell implements Drawable {
     private Boss boss;
 
 
+
     public Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
         this.x = x;
@@ -33,11 +34,11 @@ public class Cell implements Drawable {
 
     public void setActor(Actor actor) {
         this.actor = actor;
-    }
-    public void setBoss(Boss boss) {
-        this.boss = boss;
-    }
 
+    }
+    public void setBoss(Actor boss) {
+        this.actor = boss;
+    }
     public Actor getActor() {
         return actor;
     }
@@ -58,5 +59,6 @@ public class Cell implements Drawable {
     public int getY() {
         return y;
     }
+
 
 }

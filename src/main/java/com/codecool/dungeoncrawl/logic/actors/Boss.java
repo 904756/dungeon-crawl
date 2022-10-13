@@ -5,18 +5,16 @@ import com.codecool.dungeoncrawl.logic.CellType;
 import javafx.scene.input.KeyEvent;
 
 public class Boss extends Actor {
+    private int health;
+    private int strenght;
 
     public Boss(Cell cell) {
         super(cell);
+        cell.setType(CellType.BOSS);
+        this.health = 10;
+        this.strenght = 10;
     }
 
-//    public void move(int dx, int dy) {
-//        Cell nextCell = cell.getNeighbor(dx, dy);
-//            cell.setBoss(null);
-//            nextCell.setBoss(this);
-//            cell = nextCell;
-
-//    }
     @Override
     public String getTileName() {
         return "boss";

@@ -52,8 +52,8 @@ public class    MapLoader {
                             cell.setType(CellType.MONSTER2);
                             break;
                         case 'B':
+                            cell.setType(CellType.FLOOR);
                             map.setBoss(new Boss(cell));
-                            cell.setType(CellType.BOSS);
                             break;
                         case 'L':
                             cell.setType(CellType.KEY_YELLOW);
