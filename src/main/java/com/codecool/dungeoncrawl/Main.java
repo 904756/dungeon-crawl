@@ -79,8 +79,8 @@ public class Main extends Application {
         attack.setOnAction( actionEvent -> {
             Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());;
             if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
-            if ( cell.getTileName()=="skeleton1" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
-            if ( cell.getTileName()=="skeleton2" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
+            if ( cell.getTileName()=="skeleton1" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 10);
+            if ( cell.getTileName()=="skeleton2" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 15);
             if ( cell.getTileName()=="boss" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
             cell.setType(CellType.FLOOR);
             setAButtonActive(false);
@@ -133,7 +133,8 @@ public class Main extends Application {
     private boolean isMonster() {
         return (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER ||
                 map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER2 ||
-                map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER3);
+                map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType() == CellType.MONSTER3 ||
+                (map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getType())== map.getCell(map.getBoss().getX(), map.getBoss().getY()).getType());
     }
 
     private void setPickUpButtonActive(boolean isActive) {
