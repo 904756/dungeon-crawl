@@ -6,20 +6,17 @@ import javafx.scene.input.KeyEvent;
 
 public class Boss extends Actor {
 
-
-
     public Boss(Cell cell) {
         super(cell);
     }
 
-    public void move(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.FLOOR) {
-            cell.setBoss(null);
-            nextCell.setBoss(this);
-            cell = nextCell;
-        }
-    }
+//    public void move(int dx, int dy) {
+//        Cell nextCell = cell.getNeighbor(dx, dy);
+//            cell.setBoss(null);
+//            nextCell.setBoss(this);
+//            cell = nextCell;
+
+//    }
     @Override
     public String getTileName() {
         return "boss";

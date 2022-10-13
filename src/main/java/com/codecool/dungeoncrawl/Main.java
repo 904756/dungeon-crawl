@@ -152,11 +152,11 @@ public class Main extends Application {
             case UP:
                 map.getPlayer().move(0, -1);
                 map.getBoss().move(0,-1);
+                refresh();
                 PickUpButtonActivity();
                 AttackUpButtonActivity();
-                refresh();
-                refreshInventory();
 
+                refreshInventory();
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
@@ -165,7 +165,6 @@ public class Main extends Application {
                 AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
-
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
@@ -183,7 +182,6 @@ public class Main extends Application {
                 AttackUpButtonActivity();
                 refresh();
                 refreshInventory();
-
                 break;
         }
     }
