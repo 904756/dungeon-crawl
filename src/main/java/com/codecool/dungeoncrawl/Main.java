@@ -36,6 +36,8 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
+    Label StrenghtLabel = new Label();
+    Label DefenceLabel = new Label();
     VBox inventory = new VBox();
 
 
@@ -48,12 +50,16 @@ public class Main extends Application {
         playerNameLabel.setText(map.getPlayer().getName());
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
-        ui.setPadding(new Insets(20));
-        ui.add(new Label("Player: "+ playerNameLabel.getText().toUpperCase()),0,15);
-        ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 2, 0);
-        ui.add(new Label("Inventory: "), 0, 2);
-        ui.add(inventory, 2,2 );
+        ui.setPadding(new Insets(5));
+        ui.add(new Label("Player: "+ playerNameLabel.getText().toUpperCase()),0,1);
+        ui.add(new Label("Health: "), 0, 2);
+        ui.add(new Label("Strenght: "), 0, 3);
+        ui.add(new Label("Defence: "), 0, 4);
+        ui.add(new Label("Inventory: "), 0, 5);
+        ui.add(DefenceLabel, 1, 4);
+        ui.add(StrenghtLabel, 1, 3);
+        ui.add(healthLabel, 1, 2);
+        ui.add(inventory, 1,5 );
         ui.add(pickUp, 10, 0);
         setPickUpButtonActive(false);
         pickUp.setDefaultButton(true);
@@ -61,6 +67,7 @@ public class Main extends Application {
             Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());
             playerInventory.addToInventory(cell.getType());
             map.getPlayer().setInventory(playerInventory);
+            if ( cell.getTileName()=="sword" ) map.getPlayer().setStrenght(+50);
             cell.setType(CellType.FLOOR);
             setPickUpButtonActive(false);
         });
@@ -151,5 +158,7 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        StrenghtLabel.setText("" + map.getPlayer().getStrenght());
+        DefenceLabel.setText("" + map.getPlayer().getDefence());
     }
 }

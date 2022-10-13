@@ -3,7 +3,7 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 
 public class Boss extends Actor {
-    public Skeleton(Cell cell) {
+    public Boss(Cell cell) {
         super(cell);
     }
 
