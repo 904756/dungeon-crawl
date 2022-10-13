@@ -4,7 +4,7 @@ public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
     WALL("wall"),
-    MONSTER("monster"),
+    MONSTER("skeleton"),
     MONSTER2("skeleton1"),
     MONSTER3("skeleton2"),
     KEY("key"),
