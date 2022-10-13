@@ -1,9 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
-import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.actors.Monster2;
-import com.codecool.dungeoncrawl.logic.actors.Monster;
-import com.codecool.dungeoncrawl.logic.actors.Monster3;
+import com.codecool.dungeoncrawl.logic.actors.*;
 
 
 import java.io.InputStream;
@@ -16,7 +13,7 @@ public class    MapLoader {
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
-        scanner.nextLine(); // empty line
+        scanner.nextLine();
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);
         for (int y = 0; y < height; y++) {
@@ -36,7 +33,6 @@ public class    MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.MONSTER);
-//                            new Monster(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
@@ -58,7 +54,8 @@ public class    MapLoader {
                             cell.setType(CellType.MONSTER2);
                             break;
                         case 'B':
-                            cell.setType(CellType.BOSS);
+                            map.setBoss(new Boss(cell));
+                            cell.setType(CellType.FLOOR);
                             break;
                         case 'L':
                             cell.setType(CellType.KEY_YELLOW);

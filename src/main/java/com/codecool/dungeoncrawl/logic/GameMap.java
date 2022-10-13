@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.logic.actors.Boss;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.items.Item;
 
@@ -20,9 +21,16 @@ public class GameMap {
 
     private Player player;
 
+    private Boss boss;
+
+    public Boss getBoss() {
+        return boss;
+    }
+
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
+        this.boss = boss;
         cells = new Cell[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -49,5 +57,8 @@ public class GameMap {
 
     public int getHeight() {
         return height;
+    }
+
+    public void setBoss(Boss boss) {
     }
 }
