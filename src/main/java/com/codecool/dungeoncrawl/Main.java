@@ -78,7 +78,10 @@ public class Main extends Application {
         attack.setDefaultButton(true);
         attack.setOnAction( actionEvent -> {
             Cell cell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY());;
-            if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(40);
+            if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
+            if ( cell.getTileName()=="skeleton1" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
+            if ( cell.getTileName()=="skeleton2" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
+            if ( cell.getTileName()=="boss" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
             cell.setType(CellType.FLOOR);
             setAButtonActive(false);
         });
