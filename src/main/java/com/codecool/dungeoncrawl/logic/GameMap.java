@@ -30,7 +30,6 @@ public class GameMap {
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
-        this.boss = boss;
         cells = new Cell[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -60,5 +59,6 @@ public class GameMap {
     }
 
     public void setBoss(Boss boss) {
+        this.boss = boss;
     }
 }

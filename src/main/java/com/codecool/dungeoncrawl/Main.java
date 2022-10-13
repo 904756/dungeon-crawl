@@ -81,7 +81,7 @@ public class Main extends Application {
             if ( cell.getTileName()=="skeleton" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 5);
             if ( cell.getTileName()=="skeleton1" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 10);
             if ( cell.getTileName()=="skeleton2" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 15);
-            if ( cell.getTileName()=="boss" ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
+            if ( cell.getTileName() == map.getCell(map.getBoss().getX(), map.getBoss().getY()).getType().getTileName() ) map.getPlayer().setHealth(map.getPlayer().getHealth() - 30);
             cell.setType(CellType.FLOOR);
             setAButtonActive(false);
         });
