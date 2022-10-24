@@ -1,14 +1,22 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Actor;
+import com.codecool.dungeoncrawl.logic.actors.Boss;
+import com.codecool.dungeoncrawl.logic.items.Item;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
     private GameMap gameMap;
     private int x, y;
+    private Item item;
+    private Boss boss;
 
-    Cell(GameMap gameMap, int x, int y, CellType type) {
+
+
+    public Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
         this.x = x;
         this.y = y;
@@ -19,14 +27,18 @@ public class Cell implements Drawable {
         return type;
     }
 
-    public void setType(CellType type) {
+    public EventHandler<ActionEvent> setType(CellType type) {
         this.type = type;
+        return null;
     }
 
     public void setActor(Actor actor) {
         this.actor = actor;
-    }
 
+    }
+    public void setBoss(Actor boss) {
+        this.actor = boss;
+    }
     public Actor getActor() {
         return actor;
     }
@@ -47,4 +59,6 @@ public class Cell implements Drawable {
     public int getY() {
         return y;
     }
+
+
 }
