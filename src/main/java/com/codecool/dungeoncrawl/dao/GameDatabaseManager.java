@@ -20,20 +20,36 @@ public class GameDatabaseManager {
         playerDao.add(model);
     }
 
+    public enum ServerInfo {
+        DB("dungen_crawl"),
+        HOST("109.97.198.35"),
+
+        PORT("5432"),
+
+        URL("jdbc:postgresql://"),
+        USER("postgres"),
+        PASSWORD("admin");
+
+        private final String info;
+
+        ServerInfo(String info) {
+            this.info = info;
+        }
+    }
+
+    static final String URL = "jdbc:postgresql://109.97.198.35:5432/dungeon_crawl";
     private DataSource connect() throws SQLException {
-        PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        String dbName = "test";
-        String user = "test";
-        String password = "test";
 
-        dataSource.setDatabaseName(dbName);
-        dataSource.setUser(user);
-        dataSource.setPassword(password);
+        PGSimpleDataSource source = new PGSimpleDataSource();
+        source.setServerName(ServerInfo.HOST.info);
+        source.setDatabaseName(ServerInfo.DB.info);
+        source.setUser(ServerInfo.USER.info);
+        source.setPassword(ServerInfo.PASSWORD.info);
+        source.setPortNumber(Integer.parseInt(ServerInfo.PORT.info));
 
-        System.out.println("Trying to connect");
-        dataSource.getConnection().close();
-        System.out.println("Connection ok.");
-
-        return dataSource;
+        System.out.println("Connecting...!");
+        source.getConnection().close();
+        System.out.println("Connecting is ready!");
+        return source;
     }
 }
