@@ -1,10 +1,11 @@
 package com.codecool.dungeoncrawl.model;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.common.Properties;
 
 public class PlayerModel extends BaseModel {
-    private String playerName;
-    private int hp;
+    private final String playerName;
+    private Properties properties;
     private int x;
     private int y;
 
@@ -15,11 +16,11 @@ public class PlayerModel extends BaseModel {
     }
 
     public PlayerModel(Player player) {
+        super.id = player.getPlayerId();
         this.playerName = player.getName();
         this.x = player.getX();
         this.y = player.getY();
-
-        this.hp = player.getHealth();
+        this.properties = player.getProperties();
 
     }
 
@@ -27,16 +28,12 @@ public class PlayerModel extends BaseModel {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public Properties getProperties() {
+        return properties;
     }
 
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
+    public void setProperties(Properties properties) {
+        this.properties = properties;
     }
 
     public int getX() {

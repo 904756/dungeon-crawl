@@ -1,15 +1,11 @@
-
 package com.codecool.dungeoncrawl.logic.items;
 
 import com.codecool.dungeoncrawl.logic.Cell;
-import com.codecool.dungeoncrawl.logic.CellType;
-
+import com.codecool.dungeoncrawl.logic.common.Properties;
 
 public class Key extends Item {
-
-
-    public Key(Cell cell, CellType itemType) {
-        super(cell,CellType.KEY);
+    public Key(Cell cell, Properties properties) {
+        super(cell, properties);
     }
 
     @Override

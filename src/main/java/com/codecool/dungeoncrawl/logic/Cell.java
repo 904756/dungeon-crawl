@@ -1,22 +1,19 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Actor;
-import com.codecool.dungeoncrawl.logic.actors.Boss;
 import com.codecool.dungeoncrawl.logic.items.Item;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import com.codecool.dungeoncrawl.logic.items.Obstacles;
 
 public class Cell implements Drawable {
+    private final GameMap gameMap;
+    private final int x;
+    private final int y;
     private CellType type;
     private Actor actor;
-    private GameMap gameMap;
-    private int x, y;
     private Item item;
-    private Boss boss;
+    private Obstacles obstacles;
 
-
-
-    public Cell(GameMap gameMap, int x, int y, CellType type) {
+    Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
         this.x = x;
         this.y = y;
@@ -27,20 +24,32 @@ public class Cell implements Drawable {
         return type;
     }
 
-    public EventHandler<ActionEvent> setType(CellType type) {
+    public void setType(CellType type) {
         this.type = type;
-        return null;
+    }
+
+    public Actor getActor() {
+        return actor;
     }
 
     public void setActor(Actor actor) {
         this.actor = actor;
+    }
 
+    public Item getItem() {
+        return item;
     }
-    public void setBoss(Actor boss) {
-        this.actor = boss;
+
+    public void setItem(Item item) {
+        this.item = item;
     }
-    public Actor getActor() {
-        return actor;
+
+    public Obstacles getObstacles() {
+        return obstacles;
+    }
+
+    public void setObstacles(Obstacles obstacles) {
+        this.obstacles = obstacles;
     }
 
     public Cell getNeighbor(int dx, int dy) {
@@ -59,6 +68,5 @@ public class Cell implements Drawable {
     public int getY() {
         return y;
     }
-
 
 }

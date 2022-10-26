@@ -8,46 +8,47 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tiles {
+    private static final Image tileset = new Image("/tiles.png", 543 * 2, 543 * 2, true, false);
+    private static final Map<String, Tile> tileMap = new HashMap<>();
     public static int TILE_WIDTH = 32;
-
-    private static Image tileset = new Image("/tiles.png", 543 * 2, 543 * 2, true, false);
-    private static Map<String, Tile> tileMap = new HashMap<>();
-    public static class Tile {
-        public final int x, y, w, h;
-        Tile(int i, int j) {
-            x = i * (TILE_WIDTH + 2);
-            y = j * (TILE_WIDTH + 2);
-            w = TILE_WIDTH;
-            h = TILE_WIDTH;
-        }
-    }
 
     static {
         tileMap.put("empty", new Tile(0, 0));
-        tileMap.put("wall", new Tile(19, 11));
-        tileMap.put("floor", new Tile(0, 0));
+        tileMap.put("wall", new Tile(10, 17));
+        tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(27, 0));
-        tileMap.put("skeleton", new Tile(24, 8));
-        tileMap.put("skeleton1", new Tile(26, 8));
-        tileMap.put("skeleton2", new Tile(28, 8));
-        tileMap.put("key", new Tile(17 , 23));
-        tileMap.put("keyYellow", new Tile(16 , 23));
-        tileMap.put("sword", new Tile(0, 31));
-        tileMap.put("open door", new Tile(2, 9));
-        tileMap.put("closed door", new Tile(0, 9));
-        tileMap.put("open door yellow", new Tile(16, 22));
-        tileMap.put("closed door yellow", new Tile(9, 25));
-        tileMap.put("boss", new Tile(22, 23));
-        tileMap.put("fir", new Tile(1, 1));
-        tileMap.put("full fir", new Tile(0, 1));
-        tileMap.put("cactus1", new Tile(6, 1));
-        tileMap.put("cactus2", new Tile(7, 1));
-        tileMap.put("next_level", new Tile(12, 23));
+        tileMap.put("skeleton", new Tile(29, 6));
+        tileMap.put("door", new Tile(6, 10));
+        tileMap.put("openDoor", new Tile(8, 10));
+        tileMap.put("key", new Tile(18, 23));
+        tileMap.put("ax", new Tile(9, 29));
+        tileMap.put("bush", new Tile(3, 1));
+        tileMap.put("water", new Tile(8, 5));
+        tileMap.put("water<", new Tile(10, 5));
+        tileMap.put("closedHole", new Tile(23, 27));
+        tileMap.put("openedHole", new Tile(23, 26));
+        tileMap.put("armor", new Tile(1, 23));
+        tileMap.put("house", new Tile(0, 21));
+        tileMap.put("manuscript", new Tile(17, 27));
+        tileMap.put("wizard", new Tile(24, 2));
+        tileMap.put("cabbage", new Tile(15, 6));
+        tileMap.put("mushrooms", new Tile(5, 2));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
         Tile tile = tileMap.get(d.getTileName());
         context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
                 x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
+    }
+
+    public static class Tile {
+        public final int x, y, w, h;
+
+        Tile(int i, int j) {
+            x = i * (TILE_WIDTH + 2);
+            y = j * (TILE_WIDTH + 2);
+            w = TILE_WIDTH;
+            h = TILE_WIDTH;
+        }
     }
 }

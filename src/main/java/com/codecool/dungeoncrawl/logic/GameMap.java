@@ -1,31 +1,13 @@
 package com.codecool.dungeoncrawl.logic;
 
-import com.codecool.dungeoncrawl.logic.actors.Boss;
 import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.items.Item;
 
 public class GameMap {
-    private int width;
-    private int height;
-    private Cell[][] cells;
-
-    public Item getIteml() {
-        return item;
-    }
-
-    public void setIteml(Item iteml) {
-        this.item = iteml;
-    }
-
-    private Item item;
-
+    private static final String[] mapList = {"/map.txt", "/mapForest.txt", "/mapWater.txt"};
+    private final int width;
+    private final int height;
+    private final Cell[][] cells;
     private Player player;
-
-    private Boss boss;
-
-    public Boss getBoss() {
-        return boss;
-    }
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
@@ -38,16 +20,20 @@ public class GameMap {
         }
     }
 
+    public static String getMapName(int index) {
+        return mapList[index];
+    }
+
     public Cell getCell(int x, int y) {
         return cells[x][y];
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getWidth() {
@@ -56,9 +42,5 @@ public class GameMap {
 
     public int getHeight() {
         return height;
-    }
-
-    public void setBoss(Boss boss) {
-        this.boss = boss;
     }
 }

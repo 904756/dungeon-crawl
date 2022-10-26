@@ -1,23 +1,17 @@
 package com.codecool.dungeoncrawl.logic.items;
 
 import com.codecool.dungeoncrawl.logic.Cell;
-import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
-
+import com.codecool.dungeoncrawl.logic.common.Properties;
 
 public abstract class Item implements Drawable {
     private final Cell cell;
+    private final Properties properties;
 
-    public CellType getItemType() {
-        return itemType;
-    }
-
-    private CellType itemType;
-
-
-    public Item(Cell cell, CellType itemType) {
+    public Item(Cell cell, Properties properties) {
         this.cell = cell;
-        this.itemType = itemType;
+        this.cell.setItem(this);
+        this.properties = properties;
     }
 
     public Cell getCell() {
@@ -32,6 +26,7 @@ public abstract class Item implements Drawable {
         return cell.getY();
     }
 
-
-
+    public Properties getProperties() {
+        return properties;
+    }
 }
