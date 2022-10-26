@@ -1,19 +1,16 @@
-package com.codecool.dungeoncrawl;
-
-import com.codecool.dungeoncrawl.logic.CellType;
-import com.codecool.dungeoncrawl.logic.items.Item;
+package com.codecool.dungeoncrawl.logic.items;
 
 import java.util.LinkedList;
 
 public class Inventory {
 
-    LinkedList<CellType> inventory = new LinkedList<>();
+    LinkedList<Item> inventory = new LinkedList<>();
 
-    public LinkedList<CellType> getItems() {
+    public LinkedList<Item> getItems() {
         return inventory;
     }
 
-    public void addToInventory(CellType item) {
+    public void addToInventory(Item item) {
         inventory.add(item);
     }
 
