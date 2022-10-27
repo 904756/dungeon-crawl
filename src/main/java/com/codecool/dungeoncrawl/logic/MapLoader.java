@@ -90,6 +90,9 @@ public class MapLoader {
                             cell.setType(CellType.MUSHROOMS);
                             new Mushrooms(cell, new Properties(-1, 0, 0));
                             break;
+                        case 'Z':
+                            cell.setType(CellType.WINDOOR);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

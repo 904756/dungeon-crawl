@@ -296,6 +296,9 @@ public class Main extends Application {
                     move = new Move(map, inventoryContainer);
                     map.getPlayer().setName(playerNameLabel.getText());
                 }
+                else if (cell.getType() == CellType.WINDOOR ){
+                    map = MapLoader.loadMap(GameMap.getMapName(3), dbManager);
+                }
             }
         }
         if (inventoryContainer.contains("potion")) {

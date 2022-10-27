@@ -3,7 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 
 public class GameMap {
-    private static final String[] mapList = {"/map.txt", "/mapForest.txt", "/mapWater.txt"};
+    private static final String[] mapList = {"/map.txt", "/mapForest.txt", "/mapWater.txt", "/winMap.txt"};
     private final int width;
     private final int height;
     private final Cell[][] cells;
