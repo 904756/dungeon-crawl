@@ -14,13 +14,13 @@ public class Tiles {
 
     static {
         tileMap.put("empty", new Tile(0, 0));
-        tileMap.put("wall", new Tile(10, 17));
-        tileMap.put("floor", new Tile(2, 0));
+        tileMap.put("wall", new Tile(19, 11));
+        tileMap.put("floor", new Tile(0, 0));
         tileMap.put("player", new Tile(27, 0));
         tileMap.put("skeleton", new Tile(29, 6));
-        tileMap.put("door", new Tile(6, 10));
+        tileMap.put("door", new Tile(9, 25));
         tileMap.put("openDoor", new Tile(8, 10));
-        tileMap.put("key", new Tile(18, 23));
+        tileMap.put("key", new Tile(16, 23));
         tileMap.put("ax", new Tile(9, 29));
         tileMap.put("bush", new Tile(3, 1));
         tileMap.put("water", new Tile(8, 5));
@@ -29,10 +29,10 @@ public class Tiles {
         tileMap.put("openedHole", new Tile(23, 26));
         tileMap.put("armor", new Tile(1, 23));
         tileMap.put("house", new Tile(0, 21));
-        tileMap.put("manuscript", new Tile(17, 27));
+        tileMap.put("potion", new Tile(25, 23));
         tileMap.put("wizard", new Tile(24, 2));
-        tileMap.put("cabbage", new Tile(15, 6));
-        tileMap.put("mushrooms", new Tile(5, 2));
+        tileMap.put("cabbage", new Tile(23, 22));
+        tileMap.put("mushrooms", new Tile(15, 29));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {

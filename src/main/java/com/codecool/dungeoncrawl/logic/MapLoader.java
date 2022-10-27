@@ -51,7 +51,7 @@ public class MapLoader {
                             break;
                         case 'm':
                             cell.setType(CellType.FLOOR);
-                            new Manuscript(cell, new Properties(0, 0, 0));
+                            new Potion(cell, new Properties(0, 0, 0));
                             break;
                         case 'w':
                             cell.setType(CellType.WIZARD);

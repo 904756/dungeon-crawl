@@ -10,4 +10,9 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dungeon-crawl-2-java-904756" options="--add-modules java.sql" />
+    </option>
+  </component>
 </project>

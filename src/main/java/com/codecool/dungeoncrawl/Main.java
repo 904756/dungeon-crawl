@@ -286,16 +286,16 @@ public class Main extends Application {
                 }
             }
         }
-        if (inventoryContainer.contains("manuscript")) {
+        if (inventoryContainer.contains("potion")) {
             if (isOutOfBoard(currentX, currentY))
                 return;
 
             for (Cell cell : neighbourCells) {
                 if (cell.getTileName().equals("wizard")) {
                     playersProperties.setStrength(playersProperties.getStrength() + 0.2f);
-                    inventoryContainer.removeItem("manuscript");
+                    inventoryContainer.removeItem("potion");
                     refresh();
-                    Modal.message(" Thank you my friend for this manuscript. I give you some additional strength in return as promised ", "Wizard");
+                    Modal.message("Thank you my friend for this potion.", "Wizard");
                     break;
                 }
             }
@@ -303,7 +303,7 @@ public class Main extends Application {
             for (Cell cell : neighbourCells) {
                 if (cell.getTileName().equals("wizard")) {
                     refresh();
-                    Modal.message(" I'm looking for a rare manuscript my friend! I will exchange it for some additional strength if you find it ", "Wizard");
+                    Modal.message(" I'm looking for potion my friend! I will give you some power if you bring it to me", "Wizard");
                 }
             }
         }

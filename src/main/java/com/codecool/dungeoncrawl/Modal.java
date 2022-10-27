@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class Modal {
     private static final String GAME_TITLE = "Dungeon Crawl Game!";
-    private static final String WELCOME_MSG = "Please enter Your character name:";
+    private static final String WELCOME_MSG = "Enter character name:";
     private static final String SAVE_TITLE = "Saving game";
     private static final String SAVE_MSG = "Please enter the save name:";
     private static final String SAVE_BTN = "Save game";
@@ -33,8 +33,9 @@ public class Modal {
 
     public static void display() {
 
-        Stage window = getStage(GAME_TITLE, 600, 300);
+        Stage window = getStage(GAME_TITLE, 350, 600);
         Label label = getLabel(WELCOME_MSG);
+        label.setFont(Font.font("verdana", 20));
         Button closeBtn = getButton(PLAY);
         nameField.setMaxWidth(200);
         closeBtn.setDefaultButton(true);
@@ -87,17 +88,16 @@ public class Modal {
         iconView.setFitHeight(20);
         iconView.setFitWidth(20);
         closeBtn.setGraphic(iconView);
-        closeBtn.setOnMouseEntered(e -> {
-            hintField.setVisible(true);
-            hintField.setAlignment(Pos.CENTER);
-            hintField.setText("If You know any of authors names You can play special special game!");
-            hintField.setFont(Font.font("Dialog"));
-            hintField.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, null, null)));
-        });
-        closeBtn.setOnMouseExited(e -> {
-            hintField.clear();
-            hintField.setVisible(false);
-        });
+//        closeBtn.setOnMouseEntered(e -> {
+//            hintField.setVisible(false);
+//            hintField.setAlignment(Pos.CENTER);
+//            hintField.setFont(Font.font("Verdana", 50));
+//            hintField.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, null, null)));
+//        });
+//        closeBtn.setOnMouseExited(e -> {
+//            hintField.clear();
+//            hintField.setVisible(false);
+//        });
         return closeBtn;
     }
 
