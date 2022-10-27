@@ -59,7 +59,7 @@ public class Main extends Application {
         playerNameLabel.setText(Modal.getName());
         //set up DB connection.
         setupDbManager();
-        map = MapLoader.loadMap(GameMap.getMapName(0), dbManager);
+        map = MapLoader.loadMap(GameMap.getMapName(1), dbManager);
         move = new Move(map, inventoryContainer);
 
         canvas = new Canvas(
