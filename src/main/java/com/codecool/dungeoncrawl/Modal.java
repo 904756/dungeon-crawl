@@ -83,21 +83,6 @@ public class Modal {
 
     private static Button getButton(String btnLabel) {
         Button closeBtn = new Button(btnLabel);
-        Image hintIcon = new Image("/hint.png");
-        ImageView iconView = new ImageView(hintIcon);
-        iconView.setFitHeight(20);
-        iconView.setFitWidth(20);
-        closeBtn.setGraphic(iconView);
-//        closeBtn.setOnMouseEntered(e -> {
-//            hintField.setVisible(false);
-//            hintField.setAlignment(Pos.CENTER);
-//            hintField.setFont(Font.font("Verdana", 50));
-//            hintField.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, null, null)));
-//        });
-//        closeBtn.setOnMouseExited(e -> {
-//            hintField.clear();
-//            hintField.setVisible(false);
-//        });
         return closeBtn;
     }
 

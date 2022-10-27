@@ -232,6 +232,10 @@ public class Main extends Application {
         }
     }
 
+    private void resetInventory() {
+        inventory.getChildren().removeAll(inventory.getChildren());
+        }
+
     private void setPickUpButtonActive(boolean isActive) {
         pickUpButton.setDisable(!isActive);
         pickUpButton.setVisible(isActive);
@@ -278,11 +282,19 @@ public class Main extends Application {
                 if (cell.getType() == CellType.DOOR) {
                     cell.setType(CellType.OPENDOOR);
                     inventoryContainer.removeItem("key");
+                    inventoryContainer.removeItem("armor");
+                    inventoryContainer.removeItem("axe");
                     map = MapLoader.loadMap(GameMap.getMapName(1), dbManager);
+                    move = new Move(map, inventoryContainer);
+                    map.getPlayer().setName(playerNameLabel.getText());
                 } else if (cell.getType() == CellType.CLOSEDHOLE) {
                     cell.setType(CellType.OPENEDHOLE);
                     inventoryContainer.removeItem("key");
+                    inventoryContainer.removeItem("armor");
+                    inventoryContainer.removeItem("axe");
                     map = MapLoader.loadMap(GameMap.getMapName(2), dbManager);
+                    move = new Move(map, inventoryContainer);
+                    map.getPlayer().setName(playerNameLabel.getText());
                 }
             }
         }
