@@ -4,7 +4,7 @@
 
 
 
-## About the game
+# About the game
 
 A Dungeon Crawl is a type of scenario in fantasy role-playing games in which heroes navigate a labyrinth environment
 (a "dungeon"), battling various monsters, avoiding traps, looting any treasure they may find etc.
